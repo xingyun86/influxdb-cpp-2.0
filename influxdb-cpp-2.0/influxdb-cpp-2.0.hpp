@@ -53,25 +53,27 @@ inline int writev(socket_t sock, struct iovec* iov, int cnt) {
 #define std_min(a,b)            (((a) < (b)) ? (a) : (b))
 
 namespace influxdb_cpp_2 {
-    struct server_info {
+    class server_info {
+    public:
         std::string host_;
-        int port_;
+        uint16_t port_;
         std::string db_;
         std::string usr_;
         std::string pwd_;
         std::string precision_;
-        server_info(const std::string& host, int port, const std::string& db = "", const std::string& usr = "", const std::string& pwd = "", const std::string& precision = "ms")
+        server_info(const std::string& host = "", uint16_t port = 0, const std::string& db = "", const std::string& usr = "", const std::string& pwd = "", const std::string& precision = "ms")
             : host_(host), port_(port), db_(db), usr_(usr), pwd_(pwd), precision_(precision) {}
     };
-    struct server_info_v2 {
+    class server_info_v2 {
+    public:
         std::string host_;
-        int port_;
+        uint16_t port_;
         std::string bucket_;
         std::string org_;
         std::string orgid_;
         std::string token_;
         std::string precision_;
-        server_info_v2(const std::string& host, int port, const std::string& bucket = "", const std::string& org = "", const std::string& orgid = "", const std::string& token = "", const std::string& precision = "ms")
+        server_info_v2(const std::string& host = "", uint16_t port = 0, const std::string& bucket = "", const std::string& org = "", const std::string& orgid = "", const std::string& token = "", const std::string& precision = "ms")
             : host_(host), port_(port), org_(org), orgid_(orgid), bucket_(bucket), token_(token), precision_(precision) {}
     };
     namespace detail {
